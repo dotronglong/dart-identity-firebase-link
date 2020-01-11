@@ -16,6 +16,7 @@ class _EmailLinkPageState extends State<EmailLinkPage>
   TextEditingController _controllerEmail = TextEditingController();
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
   bool _isLoading = false;
+  BuildContext _context;
 
   get label => "Sign In With Link";
 
@@ -38,8 +39,9 @@ class _EmailLinkPageState extends State<EmailLinkPage>
       final Uri link = await widget.authenticator.retrieveDynamicLink();
 
       if (link != null) {
+        widget.authenticator.notify(_context, "Processing ...");
         await widget.authenticator
-            .authenticate(context, {"link": link.toString()});
+            .authenticate(_context, {"link": link.toString()});
       }
     }
   }
@@ -49,6 +51,7 @@ class _EmailLinkPageState extends State<EmailLinkPage>
     return Scaffold(
       appBar: AppBar(title: Text(label)),
       body: Builder(builder: (context) {
+        _context = context;
         return Container(
           color: Theme.of(context).primaryColorDark,
           padding: EdgeInsets.all(16),

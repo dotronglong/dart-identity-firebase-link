@@ -26,9 +26,9 @@ import 'package:identity_firebase_link/identity_firebase_link.dart';
     Identity.of(context).init(
         FirebaseProvider([
           FirebaseEmailLinkAuthenticator(
-              url: 'https://dotronglong.page.link',
-              iOSBundleID: "com.example.app.my_app",
-              androidPackageName: "com.example.app.my_app")
+              url: 'https://yourapp.firebaseapp.com',
+              iOSBundleID: "com.example.app",
+              androidPackageName: "com.example.app")
         ]),
         (context) => HomePage());
   }
