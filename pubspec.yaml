@@ -1,6 +1,6 @@
 name: identity_firebase_link
 description: Authenticate using Email Link by Firebase for Identity package
-version: 0.1.1
+version: 0.2.0
 author: Long Do <me@dotronglong.com>
 homepage: https://github.com/dotronglong/dart-identity-firebase-link
 
@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sso: ^0.1.0
-  identity: ^0.1.0
-  identity_firebase: ^0.1.0
+  sso: ^0.2.0
+  identity: ^0.2.0
+  identity_firebase: ^0.2.0
   firebase_auth: ^0.15.3
   crypto: ^2.1.3
   shared_preferences: ^0.5.6

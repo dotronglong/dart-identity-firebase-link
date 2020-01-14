@@ -5,13 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:identity/identity.dart';
-import 'package:identity_firebase/identity_firebase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sso/sso.dart';
 
 import 'email_link_page.dart';
 
-class FirebaseEmailLinkAuthenticator with WillNotify implements Authenticator {
+class FirebaseEmailLinkAuthenticator
+    with WillNotify, WillConvertUser
+    implements Authenticator {
   final String iOSBundleID;
   final String androidPackageName;
   final String url;
@@ -51,9 +52,10 @@ class FirebaseEmailLinkAuthenticator with WillNotify implements Authenticator {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     final String email = sharedPreferences.getString("email");
 
+    notify(context, "Processing ...");
     return FirebaseAuth.instance
         .signInWithEmailAndLink(email: email, link: link)
-        .then((result) => FirebaseProvider.convert(result.user))
+        .then((result) => convert(result.user))
         .then((user) => Identity.of(context).user = user)
         .catchError(Identity.of(context).error);
   }
