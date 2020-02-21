@@ -30,13 +30,13 @@ class FirebaseEmailLinkAuthenticator
   WidgetBuilder get action => (context) => ActionButton(
       onPressed: () => Navigator.push(context,
           MaterialPageRoute(builder: (context) => EmailLinkPage(this))),
-      color: Color.fromRGBO(97, 32, 105, 1),
-      textColor: Colors.white,
+      color: Colors.amber,
+      textColor: Colors.black,
       icon: Icon(
         Icons.link,
-        color: Color.fromRGBO(97, 32, 105, 1),
+        color: Colors.black,
       ),
-      text: "Sign In With Link");
+      text: "Sign in with Link");
 
   @override
   Future<void> authenticate(BuildContext context, [Map parameters]) async {
