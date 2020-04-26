@@ -6,7 +6,6 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:identity/identity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sso/sso.dart';
 
 import 'email_link_page.dart';
 
